@@ -1,0 +1,53 @@
+--- tools ---
+ - cultervators
+ - seeders
+ - spreaders
+ - sparyers
+ - trailers
+
+--- vehicles ---
+ - harvesters
+ - tractors
+ - trucks
+
+--- all tractors ---
+ -- Case IH --
+  - Maxxum 150
+  - Puma 210
+  - Magnum 380
+ -- New Holland --
+  - T6 145
+  - T7 245
+  - T8 350
+ -- John Deer --
+  - 6R 185
+  - 7R 290
+  - 8R 370
+
+--- all harvesters ---
+ -- Case IH --
+  - 2388 7.4T 30ft
+  - 7250 11.1T 40ft
+ -- New Holland --
+  - CR 7.90 11.5T 30ft
+  - CR 10.90 14.5T 45ft
+ -- John Deer --
+  - 9870 STS 10.5T 35ft
+  - S770 10.6T 40ft
+
+--- Tools ---
+ -- Cultivator --
+  - Case IH 490 24ft 120hp
+  - Landoll Verticle Tillage 32ft 320hp
+ -- Seeder --
+  - John Shearer Combine 1.6T 14ft 75hp
+  - Morris C2 Contour 6.5T 30ft 300hp
+ -- Spreader --
+  - Marshall Multispread 825T 2.5T 30ft 130hp
+  - Marshall Multispread 810T 10T 45ft 200hp
+ -- Sprayer --
+  - Hardi Ranger 2.5T 40ft 100hp
+  - Hardi Master 1.8T 60ft 150hp
+ -- Trailer --
+  - Marshall QM-12 12T 200hp
+  - Rolland Rollspeed 7840 40T 330hp
