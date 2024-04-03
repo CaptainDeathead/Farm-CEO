@@ -137,7 +137,7 @@ PADDOCK_LINES = {
 TOOL_TYPES_STATES = {
     "Harvester": 0,
     "Cultivator": 1,
-    "Seeder": 4,
+    "Seeder": 2,
     "Trailer": None,
     "Tractor": None
 }

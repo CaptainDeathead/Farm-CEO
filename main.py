@@ -6,6 +6,7 @@ import json
 from data import *
 from copy import deepcopy
 import os
+import asyncio
 
 pg.init()
 
@@ -175,7 +176,7 @@ class Tractor:
         self.header = False
         self.fuelTicks = 0
 
-    def draw(self, screen, sellPoionts):
+    def draw(self, screen, sellPoionts, dt):
         screen.blit(pg.transform.rotate(self.image, self.rotation), (self.x, self.y))
 
         if len(self.path) > 0 and type(self.path[0][0]) == int:
@@ -214,8 +215,8 @@ class Tractor:
         elif rotateDistLeft < 0: self.rotation -= min(2, abs(self.desiredRotation - self.rotation)/30)
 
         self.direction = [math.cos(math.radians(self.rotation-90)), math.sin(math.radians(self.rotation-90))]
-        self.x -= self.direction[0] * (self.speed*min(1, max(0.25, 1-abs(rotateDistLeft)/180))) / 10
-        self.y += self.direction[1] * (self.speed*min(1, max(0.25, 1-abs(rotateDistLeft)/180))) / 10
+        self.x -= self.direction[0] * (self.speed*min(1, max(0.25, 1-abs(rotateDistLeft)/180))) / 10 * (dt/15)
+        self.y += self.direction[1] * (self.speed*min(1, max(0.25, 1-abs(rotateDistLeft)/180))) / 10 * (dt/15)
 
         if len(self.path) > 0 and abs(self.path[0][1]-self.image.get_height()/2-self.y + self.path[0][0]-self.image.get_width()/2-self.x) < 2: self.path.pop(0)
 
@@ -272,6 +273,7 @@ class Tractor:
             self.stringTask = "No Task Assigned"
         elif len(self.path) == 0 and self.headingToPdk != None and not self.headingToPdk:
             self.tool.on = False
+            if self.tool.toolType == "Seeder": PADDOCK_CROPS[self.paddock] = CROP_TYPES.index(self.tool.fillType)
             _setPaddockState(self.paddock, TOOL_TYPES_STATES[self.tool.toolType])
             PADDOCK_LINES[self.paddock] = []
             self.path = ROADS[PADDOCK_ROUTES[self.paddock]].copy()
@@ -948,6 +950,7 @@ class Window:
         #self.tractors.append(Header(self.farm.x+50/ZOOM, self.farm.y+150/ZOOM, self.vehiclesDict['Harvesters']['Case IH']['2388'], "Case IH", "2388"))
         #self.money = 20000*1000
         #self.xp = 1000*1000
+        self.dt = 0
         self.money = self.save['money']
         self.xp = self.save['xp']
         self.popup = None
@@ -1047,7 +1050,7 @@ class Window:
         for pdk in PADDOCK_STATES:
             if PADDOCK_STATES[pdk] in (2, 3, 4): self.setPaddockState(pdk, PADDOCK_STATES[pdk] + 1)
 
-    def main(self):
+    async def main(self):
         pdkCount = 0
         clock = pg.time.Clock()
         pressed = False
@@ -1115,7 +1118,7 @@ class Window:
             self.farm.silo.draw(self.screen, True)
             for sellPoint in self.sellPoints: sellPoint.silo.draw(self.screen, True)
             for tractor in self.tractors:
-                if not tractor.inShed: tractor.draw(self.screen, self.sellPoints)
+                if not tractor.inShed: tractor.draw(self.screen, self.sellPoints, self.dt)
             for tool in self.tools:
                 if tool.on and math.sqrt(abs((tool.y-tool.lastPaint[1])**2+(tool.x-tool.lastPaint[0])**2)) > tool.rect.width:
                     tool.lastPaint = (tool.x, tool.y)
@@ -1262,8 +1265,10 @@ class Window:
                 #    print(tuple(PADDOCK_RECTS[22][0]))
             clicked = False
             pg.display.flip()
-            clock.tick(60)
+            self.dt = clock.tick(60)
+            await asyncio.sleep(0)
 
 if __name__ == "__main__":
     window = Window()
-    window.main()
+    #window.main()
+    asyncio.run(window.main())
