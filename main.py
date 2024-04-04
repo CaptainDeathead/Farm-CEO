@@ -57,9 +57,9 @@ class Silo:
     def __init__(self, x, y, rotation=0):
         self.x = x
         self.y = y
-        self.image = pg.image.load(PATH+"Data/Sprites/silo.png").convert_alpha()
+        self.image = pg.image.load(PATH+"Data/Sprites/silo.bmp").convert_alpha()
         self.image = pg.transform.rotate(pg.transform.scale(self.image, (self.image.get_width()*2/ZOOM, self.image.get_height()*2/ZOOM)), rotation)
-        self.gridImage = pg.image.load(PATH+"Data/Sprites/grid.png").convert_alpha()
+        self.gridImage = pg.image.load(PATH+"Data/Sprites/grid.bmp").convert_alpha()
         self.gridImage = pg.transform.rotate(pg.transform.scale(self.gridImage, (self.gridImage.get_width()*2/ZOOM, self.gridImage.get_height()*2/ZOOM)), rotation)
         self.storage = {
             "Wheat": 0,
@@ -806,8 +806,8 @@ class Popup:
         else: self.dropDowns = []
         #self.decline = pgui.Button(self.x+self.width-50/ZOOM, self.y+self.height-25/ZOOM, 35/ZOOM, 35/ZOOM, (255, 0, 0), (200, 0, 0), (255, 255, 255), "", 10, (5, 5, 5, 5), 0, 0)
         #self.accept = pgui.Button(self.x+self.width-25/ZOOM, self.y+self.height-25/ZOOM, 35/ZOOM, 35/ZOOM, (0, 255, 0), (0, 200, 0), (255, 255, 255), "", 10, (5, 5, 5, 5), 0, 0)
-        self.tick = pg.transform.scale(pg.image.load(PATH+"Data/tick.png").convert_alpha(), (35/ZOOM, 35/ZOOM))
-        self.cross = pg.transform.scale(pg.image.load(PATH+"Data/cross.png").convert_alpha(), (35/ZOOM, 35/ZOOM))
+        self.tick = pg.transform.scale(pg.image.load(PATH+"Data/tick.bmp").convert_alpha(), (35/ZOOM, 35/ZOOM))
+        self.cross = pg.transform.scale(pg.image.load(PATH+"Data/cross.bmp").convert_alpha(), (35/ZOOM, 35/ZOOM))
         self.popup = None
 
     def draw(self, screen, pressed, mousePos):
@@ -932,7 +932,7 @@ class Window:
         self.screen = pg.display.set_mode((int(2340/ZOOM), int(1080/ZOOM)))
         pg.display.set_caption("Farm CEO")
         self.mapScale = 1080/ZOOM/609
-        self.map = pg.transform.scale(pg.image.load(PATH+"Data/map.png").convert_alpha(), (int(969*self.mapScale), int(609*self.mapScale)))
+        self.map = pg.transform.scale(pg.image.load(PATH+"Data/map.bmp").convert_alpha(), (int(969*self.mapScale), int(609*self.mapScale)))
         self.vehiclesDict = json.loads(open(PATH+'Data/Machinary/Vehicles/vehicles.json', 'r').read())
         self.toolsDict = json.loads(open(PATH+'Data/Machinary/Tools/tools.json', 'r').read())
         self.save = json.loads(open(PATH+'save.json', 'r').read())
@@ -978,8 +978,8 @@ class Window:
             self.sellPoints.append(newSellPoint)
             
         self.focusedTractor = None
-        self.xpIcon = pg.transform.scale(pg.image.load(PATH+'Data/xp.png').convert_alpha(), (52/ZOOM, 52/ZOOM))
-        self.moneyIcon = pg.transform.scale(pg.image.load(PATH+'Data/currency.png').convert_alpha(), (52/ZOOM, 52/ZOOM))
+        self.xpIcon = pg.transform.scale(pg.image.load(PATH+'Data/xp.bmp').convert_alpha(), (52/ZOOM, 52/ZOOM))
+        self.moneyIcon = pg.transform.scale(pg.image.load(PATH+'Data/currency.bmp').convert_alpha(), (52/ZOOM, 52/ZOOM))
         self.overlayFont = pg.font.SysFont("arial", int(45/ZOOM))
 
     def _initEquipment(self):
