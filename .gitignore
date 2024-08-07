@@ -4,3 +4,4 @@ game/bin/*
 game/.venv/*
 game/__pycache__/*
 __pycache__/*
+.vscode/*
