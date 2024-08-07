@@ -1,0 +1,107 @@
+{
+    "siloFill": {
+        "Wheat": 10,
+        "Barley": 0,
+        "Canola": 0,
+        "Oat": 0
+    },
+    "sellPoints": {
+        "Green Spring Trades": {
+            "prices": {
+                "Wheat": 300,
+                "Barley": 400,
+                "Canola": 800,
+                "Oat": 600
+            },
+            "demand": {
+                "Wheat": 100,
+                "Barley": 100,
+                "Canola": 100,
+                "Oat": 100
+            }
+        },
+        "Green Spring Mill": {
+            "prices": {
+                "Wheat": 300,
+                "Barley": 400,
+                "Canola": 800,
+                "Oat": 600
+            },
+            "demand": {
+                "Wheat": 100,
+                "Barley": 100,
+                "Canola": 100,
+                "Oat": 100
+            }
+        },
+        "Green Spring Bakery": {
+            "prices": {
+                "Wheat": 300,
+                "Barley": 400,
+                "Canola": 800,
+                "Oat": 600
+            },
+            "demand": {
+                "Wheat": 100,
+                "Barley": 100,
+                "Canola": 100,
+                "Oat": 100
+            }
+        }
+    },
+    "paddockStates": {
+        "1": 0,
+        "2": 0,
+        "3": 4,
+        "4": 3,
+        "5": 1,
+        "6": 1,
+        "7": 5,
+        "8": 0,
+        "9": 5
+    },
+    "paddockOwners": {
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 1,
+        "9": 0
+    },
+    "tractors": {
+        "0": {
+            "header": false,
+            "brand": "New Holland",
+            "model": "T6 145",
+            "fuel": 290
+        },
+        "1": {
+            "header": true,
+            "brand": "Case IH",
+            "model": "2388",
+            "fuel": 700
+        }
+    },
+    "tools": {
+        "0": {
+            "toolType": "Cultivators",
+            "brand": "Case IH",
+            "model": "490"
+        },
+        "1": {
+            "toolType": "Seeders",
+            "brand": "John Sheerer",
+            "model": "Combine 14ft"
+        },
+        "2": {
+            "toolType": "Trailers",
+            "brand": "Marshall",
+            "model": "QM-12"
+        }
+    },
+    "money": 20000,
+    "xp": 1000
+}
