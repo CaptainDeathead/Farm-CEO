@@ -1,4 +1,4 @@
-Docker/*
+docker/*
 game/.buildozer/*
 game/bin/*
 game/.venv/*
